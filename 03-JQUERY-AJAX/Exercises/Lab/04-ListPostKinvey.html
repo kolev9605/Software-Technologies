@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kinvey</title>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+</head>
+<body>
+<h1>My posts:</h1>
+<button id="showPosts">Show Posts</button>
+<br>
+<hr>
+<h3>Create new post</h3>
+Title:
+<input type="text" id="newPostTitle"/>
+Autor:
+<input type="text" id="newPostAuthor"/>
+Description:
+<input type="text" id="newPostDescription"/>
+<button id="submitNewPost">Create</button>
+<script>
+    $('#showPosts').click(function () {
+        $.ajax({
+            method: "GET",
+            url: "https://baas.kinvey.com/appdata/kid_SkjSrB2H/posts",
+            headers: {
+                "Authorization": "Basic " + btoa('kolev:kolev')
+            },
+            success: function (data, status) {
+                for (let post of data) {
+                    let title = post.title;
+                    let author = post.author;
+                    let description = post.description;
+
+                    $('body').append($('<div>').text(title + ' | ' + author + ' | ' + description));
+                }
+            },
+            error: function (data, status) {
+                $('body').append(JSON.stringify(data));
+            }
+        });
+    });
+
+    $('#submitNewPost').click(function () {
+        $.ajax({
+            method: "POST",
+            url: "https://baas.kinvey.com/appdata/kid_SkjSrB2H/posts",
+            headers: {
+                "Authorization": "Basic " + btoa('kolev:kolev')
+            },
+            data: {
+                title: $('#newPostTitle').val(),
+                author: $('#newPostAuthor').val(),
+                description: $('#newPostDescription').val()
+            },
+            success: function (data, status) {
+                alert('Added!')
+            },
+            error: function (data, status) {
+                $('body').append(JSON.stringify(data));
+            }
+        });
+    })
+
+</script>
+</body>
+</html>

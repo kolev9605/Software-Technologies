@@ -1,0 +1,43 @@
+h1 {
+	text-align: center;
+	background: #eee;
+	padding: 10px;
+}
+
+body {
+	margin: 20px;
+}
+
+.menu {
+	background: #eee;
+	padding: 20px 10px 20px 10px;
+	width: 150px;
+	margin: 0 30px 20px 0;
+	float: left;
+}
+
+.menu div {
+	padding: 10px;
+	margin: 10px;
+	border-radius: 9px;
+	font-size: 20pt;
+	color: #e88;
+	font-style: Ariel;
+}
+
+.menu div:hover {
+	background: #ecc;
+	cursor: pointer;
+}
+
+.text {
+	background: #eef;
+	margin-left: 200px;
+	padding: 10px 20px 10px 20px;
+}
+
+.footer {
+	clear: both;
+	text-align: center;
+	background: #eee;
+}
