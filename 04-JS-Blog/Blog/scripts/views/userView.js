@@ -22,7 +22,7 @@ class UserView {
                 let rendered = Mustache.render(template, null);
                 $(_that._mainContentSelector).html(rendered);
 
-                $('#login-request-button').on('click', function (ey) {
+                $('#login-request-button').on('click', function (ev) {
                     let username = $('#username').val();
                     let password = $('#password').val();
 
@@ -55,17 +55,17 @@ class UserView {
                 let rendered = Mustache.render(template, null);
                 $(_that._mainContentSelector).html(rendered);
 
-                $('#login-request-button').on('click', function (ey) {
+                $('#register-request-button').on('click', function (ev) {
                     let username = $('#username').val();
                     let password = $('#password').val();
                     let confirmPassword = $('#pass-confirm').val();
-                    let fullname = $('#full-name').val();
+                    let fullName = $('#full-name').val();
 
                     let data = {
                         username: username,
                         password: password,
                         confirmPassword: confirmPassword,
-                        fullname: fullname
+                        fullName: fullName
                     };
 
                     triggerEvent('register', data);

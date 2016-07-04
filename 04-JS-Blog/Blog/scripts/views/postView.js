@@ -22,13 +22,13 @@ class PostView {
                 let renderedContent = Mustache.render(template, null);
                 $(_that._mainContentSelector).html(renderedContent);
 
-                $('#author').val(data.fullname);
+                $('#author').val(data.fullName);
 
-                $('#create-new-post-request-button').on('click', function (ey) {
+                $('#create-new-post-request-button').on('click', function (ev) {
                     let title = $("#title").val();
                     let author = $("#author").val();
                     let content = $("#content").val();
-                    let date = moment.format("MMMM Do YYYY");
+                    let date = moment().format("MMMM Do YYYY");
 
                     let data = {
                         title: title,

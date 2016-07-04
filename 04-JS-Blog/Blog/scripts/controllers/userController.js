@@ -23,9 +23,9 @@ class UserController {
 
                 sessionStorage['_authToken'] = data._kmd.authtoken;
                 sessionStorage['username'] = data.username;
-                sessionStorage['fullname'] = data.fullname;
+                sessionStorage['fullName'] = data.fullName;
 
-                redirectUrl('#/');
+                redirectUrl("#/");
 
             },
 
@@ -40,8 +40,9 @@ class UserController {
             return;
         }
 
-        if (requestData.fullname.length < 8) {
+        if (requestData.fullName.length < 8) {
             showPopup('error', 'Full name must consist of atleast 8 symbols.');
+            return;
         }
 
         if (requestData.password.length < 6) {
@@ -54,13 +55,14 @@ class UserController {
             return;
         }
 
+        
         delete requestData['confirmPassword'];
 
         let requestUrl = this._baseServiceUrl;
         this._requester.post(requestUrl, requestData,
             function success(data) {
                 showPopup('success', 'You have successfully registered.');
-                redirectUrl('#/login');
+                redirectUrl("#/login");
             },
 
             function error(data) {
@@ -70,6 +72,6 @@ class UserController {
 
     logout() {
         sessionStorage.clear();
-        redirectUrl('#/');
+        redirectUrl("#/");
     }
 }

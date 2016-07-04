@@ -9,7 +9,7 @@ class HomeController {
     showGuestPage() {
         let _that = this;
         let recentPosts = [];
-        let requestUrl = this._baseServiceUrl + '/appdata/' + this._appKey + "/blog";
+        let requestUrl = this._baseServiceUrl + '/appdata/' + this._appKey + "/posts";
 
         this._requester.get(requestUrl,
             function success(data) {
@@ -20,6 +20,7 @@ class HomeController {
                 });
 
                 let currentId = 1;
+
                 for (let i = 0; i < data.length && i < 5; i++) {
                     data[i].postId = currentId;
                     currentId++;
@@ -38,7 +39,7 @@ class HomeController {
     showUserPage() {
         let _that = this;
         let recentPosts = [];
-        let requestUrl = this._baseServiceUrl + '/appdata/' + this._appKey + "/blog";
+        let requestUrl = this._baseServiceUrl + '/appdata/' + this._appKey + "/posts";
 
         this._requester.get(requestUrl,
             function success(data) {
@@ -49,6 +50,7 @@ class HomeController {
                 });
 
                 let currentId = 1;
+                
                 for (let i = 0; i < data.length && i < 5; i++) {
                     data[i].postId = currentId;
                     currentId++;
