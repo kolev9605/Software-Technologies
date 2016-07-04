@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Selected</title>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <style>
+        li {
+            display: inline-block;
+            padding: 10px;
+        }
+    </style>
+
+</head>
+<body>
+<h1>Some items</h1>
+<ul id="items">
+    <li>Sofia</li>
+    <li>Varna</li>
+    <li>Ruse</li>
+</ul>
+<button id="show-button">Show Selected</button>
+<script>
+    $('#items>li').click(function () {
+        let lis = $(this);
+        if (lis.attr('data-selected')) {
+            lis.removeAttr('data-selected')
+            lis.css('background', '')
+        } else {
+            lis.attr('data-selected', 'true')
+            lis.css('background', '#DDD')
+        }
+    })
+
+    $('#show-button').click(function () {
+        let selected = $('#items>li[data-selected=true]');
+        let towns=[]
+        for(let x of selected) {
+            towns.push(x.innerText);
+        }
+
+        $('body').append($('<div>').text(towns.join(', ')))
+    })
+
+</script>
+</body>
+</html>
